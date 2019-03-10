@@ -7,6 +7,7 @@ const PORT = 4000;
 const cors = require('cors');
 const config = require('./DB');
 const ServerPortRouter = require('./routes/ServerPortRouter');
+const LoginRouter = require('./routes/LoginRouter');
 
 mongoose.connect(config.DB).then(
     () => {console.log('Database is connected') },
@@ -18,6 +19,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 app.use('/serverport', ServerPortRouter);
+app.use('/loginport', LoginRouter);
 
 app.listen(PORT, function(){
   console.log('Server is running on Port: ',PORT);
